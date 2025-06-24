@@ -1,0 +1,124 @@
+.hero{
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+}
+
+.hsection{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.htitle{
+    margin-top: 50px;
+    font-size: 100px;
+    color: pink;
+    font-size: 70px;
+    font-weight: 100;
+    line-height: 1.2;
+    text-align:  left;
+}
+
+.awards{
+    font-size: 25px;
+    font-weight: 100;
+}
+
+.awards h2{
+    font-weight: 100;
+}
+
+.awards p {
+    font-size: 18px;
+    margin: 12px 0;
+}
+
+.awardList{
+    display: flex;
+    gap: 8px;
+}
+
+.awardList img{
+    width: 36px;
+    height: 36px;
+    padding: 8px;
+    background-color: white;
+    border-radius: 100%;
+}
+
+.scroll{
+    margin-bottom: 50px;
+    width: max-content;
+
+}
+
+.htitle span{
+    color: black;
+}
+
+.hsection.right{
+    align-items: end;
+}
+
+.follow{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    background-color: #2f204e;
+    border-bottom-left-radius: 10px;
+}
+
+.follow img{
+    width: 20px;
+    height: 20px;
+}
+
+.followTextContainer{
+    width: 20px;
+    height: 20px;
+}
+
+.followText{
+    background-color: #dd4c62;
+    font-size: 12px;
+    rotate: 90deg;
+    width: max-content;
+    height: 100%;
+    transform-origin: left top;
+    transform: translateY(-99%);
+    padding: 0 8px;
+    display: flex;
+    align-items: center;
+    border-bottom-right-radius: 10px;
+}
+
+.certification{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    text-align: center; 
+}
+
+/* image-person */
+.img-person{
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.bubble-container{
+
+}
+
+.bubble{
+
+}
+
+.bubble img{
+
+}
