@@ -13,7 +13,7 @@ const Hero = () => {
         {/* SUBTITLE */}
         <div className="awards">
           <h2>Developer here</h2>
-          <p>Lorem ipsum dolar sit amet</p>
+          <p>I build sleek, scalable web apps </p>
           <div className="awardList">
             <img src="/award1.png" alt="" />
             <img src="/award2.png" alt="" />
@@ -63,12 +63,10 @@ const Hero = () => {
         <Speech />
         {/* CERTIFICATE */}
         <div className="certification">
-        <div className="imgContainer">
-          <img src="/person.png" alt="" className="img-person" />
-        </div>
+          <div className="imgContainer">
+            <img src="/person.png" alt="" className="img-person" />
+          </div>
           fullstack developer
-          <br />
-          UI /UX designer
         </div>
         {/* CONTACT BUTTON */}
         <a href="/contact" className="contactLink">
@@ -92,19 +90,25 @@ const Hero = () => {
             <div className="arrow">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                viewBox=" 0 0 24 24"
-                width={50}
-                height={50}
-                fill="black"
+                viewBox="0 0 24 24"
+                width="50"
+                height="50"
+                fill="none"
                 stroke="black"
-                strokeWidth={2}
+                strokeWidth="2"
               >
-                <line x1={6} y1={18} x2={18} y2={6} />
+                <line x1="6" y1="18" x2="18" y2="6" />
                 <polyline points="9 6 18 6 18 15" />
               </svg>
             </div>
           </div>
         </a>
+      </div>
+      <div className="bg">
+        {/* 3d */}
+        <div className="hImg">
+          <img src="/hero.png" alt="" />
+        </div>
       </div>
     </div>
   );
