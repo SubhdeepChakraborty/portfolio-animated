@@ -1,27 +1,86 @@
+import { animate, stagger } from "motion";
 import "./hero.css";
 import Speech from "./Speech";
+import {motion} from "motion/react";
+
+
+//emoji variants
+const emojiVariants = {
+  initial: {
+    x: -100,
+    opacity: 0,
+  },
+  animate: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      duration: 1,
+      staggerChildren: 0.2,
+      type : "spring",
+      bounce: 0.3,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const followVariants = {
+  initial : { y : -100, opacity: 0 },
+  animate : {y : 0, opacity: 1, transition: { duration: 1, type: "spring", bounce: 0.3, staggerChildren : 0.2 } }
+}
+
 
 const Hero = () => {
   return (
     <div className="hero">
       <div className="hsection left">
         {/* TITLE */}
-        <h1 className="htitle">
+        <motion.h1
+          initial={{
+            y: -100,
+            opacity: 0,
+          }}
+          animate={{
+            y: 0,
+            opacity: 1,
+          }}
+          transition={{
+            duration: 1,
+          }}
+          className="htitle"
+        >
           Hey there, <br />
           <span>I&apos;m Subhadeep</span>
-        </h1>
+        </motion.h1>
         {/* SUBTITLE */}
-        <div className="awards">
-          <h2>Developer here</h2>
-          <p>I build sleek, scalable web apps </p>
-          <div className="awardList">
-            <img src="/award1.png" alt="" />
-            <img src="/award2.png" alt="" />
-            <img src="/award3.png" alt="" />
-          </div>
-        </div>
+        <motion.div
+          className="awards"
+          variants={emojiVariants}
+          initial="initial"
+          animate="animate"
+        >
+          <motion.h2 variants={emojiVariants}>Developer here</motion.h2>
+          <motion.p variants={emojiVariants}>
+            I build sleek, scalable web apps{" "}
+          </motion.p>
+          <motion.div variants={emojiVariants} className="awardList">
+            <motion.img variants={emojiVariants} src="/github.png" alt="" />
+            <motion.img variants={emojiVariants} src="/linkedin.png" alt="" />
+          </motion.div>
+        </motion.div>
         {/* SCROLL */}
-        <a href="#services" className="scroll">
+        <motion.a
+          animate={{
+            y: [0, 5],
+            opacity: [0, 1, 0],
+            transition: {
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            },
+          }}
+          href="#services"
+          className="scroll"
+        >
           <svg
             width="50px"
             height="50px"
@@ -31,34 +90,48 @@ const Hero = () => {
           >
             <path
               d="M5 9C5 5.13401 8.13401 2 12 2C15.866 2 19 5.13401 19 9V15C19 18.866 15.866 22 12 22C8.13401 22 5 18.866 5 15V9Z"
-              stroke="white"
+              stroke="black"
               strokeWidth="1"
             />
-            <path
+            <motion.path
+              animate={{
+                y: [0, 5],
+                opacity: [0, 1, 0],
+                transition: {
+                  repeat: Infinity,
+                  duration: 4,
+                  ease: "easeInOut",
+                },
+              }}
               d="M12 5V8"
-              stroke="white"
+              stroke="black"
               strokeWidth="1"
               strokeLinecap="round"
             />
           </svg>
-        </a>
+        </motion.a>
       </div>
       <div className="hsection right">
         {/* fOLLOW */}
-        <div className="follow">
-          <a href="/">
+        <motion.div
+          variants={followVariants}
+          initial="initial"
+          animate="animate"
+          className="follow"
+        >
+          <motion.a variants={followVariants} href="/">
             <img src="/instagram.png" alt="" />
-          </a>
-          <a href="/">
+          </motion.a>
+          <motion.a variants={followVariants} href="/">
             <img src="/youtube.png" alt="" />
-          </a>
-          <a href="/">
+          </motion.a>
+          <motion.a variants={followVariants} href="/">
             <img src="/facebook.png" alt="" />
-          </a>
-          <div className="followTextContainer">
+          </motion.a>
+          <motion.div variants={followVariants} className="followTextContainer">
             <div className="followText">Follow me</div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
         {/* BUUBLE */}
         <Speech />
         {/* CERTIFICATE */}
@@ -69,8 +142,25 @@ const Hero = () => {
           fullstack developer
         </div>
         {/* CONTACT BUTTON */}
-        <a href="/contact" className="contactLink">
-          <div className="contactButton">
+        <motion.a
+          animate = {{
+            opacity: [0,1]
+          }}
+          transition={{
+            duration: 1,
+          }}
+          href="/contact"
+          className="contactLink"
+        >
+          <motion.div animate ={{ 
+            rotate: [0, 360],
+          }} transition={
+            {
+              duration: 10,
+              repeat: Infinity,
+              ease: "linear",
+            }
+          } className="contactButton">
             <svg viewBox="0 0 200 200" width="150" height="150">
               <circle cx="100" cy="100" r="90" fill="pink" />
               <path
@@ -101,8 +191,8 @@ const Hero = () => {
                 <polyline points="9 6 18 6 18 15" />
               </svg>
             </div>
-          </div>
-        </a>
+          </motion.div>
+        </motion.a>
       </div>
       <div className="bg">
         {/* 3d */}
