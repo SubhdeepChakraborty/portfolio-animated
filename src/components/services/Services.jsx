@@ -4,16 +4,14 @@ import React from "./react/React";
 import "./services.css";
 import Counter from "./Counter";
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 const Services = () => {
-  const servicesRef = useRef(null);
-  const inView = useInView(servicesRef, {
-    threshold: 0.6, // 60% of element must be visible
-    rootMargin: "0px 0px -20% 0px", // wait until it's closer to center
+  const ref = useRef(null);
+  const inView = useInView(ref, {
+    once: true, // This will ensure the animation only triggers once when the element comes into view
+    margin: "-100px 0px -100px 0px", // Adjust this margin as needed to trigger the animation earlier or later
   });
-  console.log("Services in view:", servicesRef.current);
-  console.log(inView);
 
   const services = [
     {
@@ -64,27 +62,27 @@ const Services = () => {
       x: 0,
       transition: {
         duration: 1,
-        type: "spring",
-        bounce: 0.3,
-        staggerChildren: 0.2,
+        staggerChildren: 0.5,
       },
     },
   };
 
+  const [serviceId, setServiceId] = useState(1)
+
   return (
-    <div className="services" ref={servicesRef}>
+    <div className="services" ref={ref}>
       <div className="s-Section left">
         <motion.h1
           variants={textvarients}
           initial="initial"
-          animate="animate"
+          animate={inView ? "animate" : "initial"}
           className="sTitle"
         >
           How do I help?
         </motion.h1>
-        <div className="serviceList">
+        <motion.div variants={listVarients} animate={inView ? "animate" : "initial"} className="serviceList">
           {services.map((service) => (
-            <div className="sItem" key={service.id}>
+            <motion.div variants={listVarients} className="sItem" key={service.id} onClick={() => setServiceId(service.id)}>
               <div className="serviceIcon">
                 <img src={service.img} alt={service.title} />
               </div>
@@ -92,16 +90,16 @@ const Services = () => {
                 <h2>{service.title}</h2>
                 <p>Projects: {service.counter}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
         <div className="counterList">
           <Counter from={0} to={30} text="Project Completed" />
           <Counter from={0} to={20} text="Tech Stack" />
         </div>
       </div>
       <div className="s-Section right">
-        <React />
+        {serviceId == 1 ? (<ComputerContainer/>) : serviceId == 2 ? (<React/>) : (<Shark/>) }
       </div>
     </div>
   );
