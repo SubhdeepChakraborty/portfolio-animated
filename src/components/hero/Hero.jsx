@@ -1,7 +1,9 @@
-import { animate, stagger } from "motion";
+import { Canvas } from "@react-three/fiber";
 import "./hero.css";
 import Speech from "./Speech";
 import {motion} from "motion/react";
+import Shape from "./Shape";
+import { Suspense } from "react";
 
 
 //emoji variants
@@ -137,14 +139,14 @@ const Hero = () => {
         {/* CERTIFICATE */}
         <div className="certification">
           <div className="imgContainer">
-            <img src="/person.png" alt="" className="img-person" />
+            <img src="/tree.png" alt="" className="img-person" />
           </div>
           fullstack developer
         </div>
         {/* CONTACT BUTTON */}
         <motion.a
-          animate = {{
-            opacity: [0,1]
+          animate={{
+            opacity: [0, 1],
           }}
           transition={{
             duration: 1,
@@ -152,15 +154,17 @@ const Hero = () => {
           href="/contact"
           className="contactLink"
         >
-          <motion.div animate ={{ 
-            rotate: [0, 360],
-          }} transition={
-            {
+          <motion.div
+            animate={{
+              rotate: [0, 360],
+            }}
+            transition={{
               duration: 10,
               repeat: Infinity,
               ease: "linear",
-            }
-          } className="contactButton">
+            }}
+            className="contactButton"
+          >
             <svg viewBox="0 0 200 200" width="150" height="150">
               <circle cx="100" cy="100" r="90" fill="pink" />
               <path
@@ -196,8 +200,13 @@ const Hero = () => {
       </div>
       <div className="bg">
         {/* 3d */}
+        <Canvas>
+          <Suspense fallback="Loading...">
+            <Shape />
+          </Suspense>
+        </Canvas>
         <div className="hImg">
-          <img src="/hero.png" alt="" />
+          <img src="/man_shirt.png" alt="" />
         </div>
       </div>
     </div>

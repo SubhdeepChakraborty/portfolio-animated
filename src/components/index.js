@@ -1,7 +1,7 @@
 import Portfolio from "./portfolio/portfolio";
 import Contact from "./contact/Contact";
 import Hero from "./hero/hero";
-import Services from "./services/services";
+import Services from "./services/Services";
 
 
 export {Portfolio , Contact, Hero, Services };

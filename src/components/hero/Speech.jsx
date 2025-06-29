@@ -25,7 +25,7 @@ const Speech = () => {
           repeat={Infinity}
         />
       </div>
-      <img src="/man.png" alt="" />
+      <img src="/boy.png" alt="" />
     </motion.div>
   );
 };
