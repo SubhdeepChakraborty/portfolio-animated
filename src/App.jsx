@@ -7,12 +7,12 @@ const App = () => {
         <section id="home">
           <Hero />
         </section>
-        <section id="portfolio">
+        <section id="services">
           <Services />
         </section>
-        <section id="services">
+        {/* <section id="portfolio"> */}
           <Portfolio />
-        </section>
+        {/* </section> */}
         <section id="contact">
           <Contact />
         </section>
