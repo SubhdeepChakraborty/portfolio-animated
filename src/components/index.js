@@ -1,6 +1,6 @@
 import Portfolio from "./portfolio/Portfolio";
 import Contact from "./contact/Contact";
-import Hero from "./hero/hero";
+import Hero from "./hero/Hero";
 import Services from "./services/Services";
 
 
