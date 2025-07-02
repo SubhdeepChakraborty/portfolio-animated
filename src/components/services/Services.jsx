@@ -1,4 +1,4 @@
-import ComputerContainer from "./computer/computerContainer";
+import ComputerContainer from "./computer/ComputerContainer";
 import Shark from "./shark/Shark";
 import React from "./react/React";
 import "./services.css";
