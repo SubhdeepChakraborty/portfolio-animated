@@ -1,4 +1,4 @@
-import Portfolio from "./portfolio/portfolio";
+import Portfolio from "./portfolio/Portfolio";
 import Contact from "./contact/Contact";
 import Hero from "./hero/hero";
 import Services from "./services/Services";
