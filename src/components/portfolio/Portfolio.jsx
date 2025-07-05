@@ -40,23 +40,69 @@ const items = [
   },
 ];
 
+const imgVarients = {
+  initial : {
+    x : -500,
+    y : 500,
+    opacity : 0
+  },
+  animate : {
+    x : 0,
+    y : 0,
+    opacity : 1,
+    transition : {
+      duration : 0.5,
+      ease : "easeInOut"
+    }
+  }
+}
+
+const textVarients = {
+  initial : {
+    x : 500,
+    y : 500,
+    opacity : 0
+  },
+  animate : {
+    x : 0,
+    y : 0,
+    opacity : 1,
+    transition : {
+      duration : 0.5,
+      ease : "easeInOut",
+      staggerChildren : 0.05
+    }
+  }
+}
+
+
 const List = (({item}) => {
+  const listRef = useRef();
+  const isInViewHook = useInView(listRef, {
+    margin : "-100px"
+  })
   return (
-    <div className="pItem">
-      <div className="pImg">
+    <div className="pItem" ref={listRef}>
+      <motion.div
+        variants={imgVarients}
+        animate={isInViewHook ? "animate" : "initial"}
+        className="pImg"
+      >
         <img src={item?.img} alt="image" />
-      </div>
-      <div className="pText">
-        <h1>{item?.title}</h1>
-        <p>{item?.desc}</p>
-        <a href={item?.link} >
-          <button>
-            View Project
-          </button>
-        </a>
-      </div>
+      </motion.div>
+      <motion.div
+        variants={textVarients}
+        animate={isInViewHook ? "animate" : "initial"}
+        className="pText"
+      >
+        <motion.h1 variants={textVarients}>{item?.title}</motion.h1>
+        <motion.p variants={textVarients}>{item?.desc}</motion.p>
+        <motion.a variants={textVarients} href={item?.link}>
+          <button>View Project</button>
+        </motion.a>
+      </motion.div>
     </div>
-  )
+  );
 })
 
 const Portfolio = () => {
@@ -79,9 +125,12 @@ const Portfolio = () => {
   //translate x
   const xTranslate = useTransform(scrollYProgress, [0,1], [0, -window.innerWidth * items.length])
   return (
-    <div className="portfolio" ref={ref} >
-      <motion.div className="pList" style={{x : xTranslate}} >
-        <div className="empty" style={{ width: window.innerWidth - containerDistance}} />
+    <div className="portfolio" ref={ref}>
+      <motion.div className="pList" style={{ x: xTranslate }}>
+        <div
+          className="empty"
+          style={{ width: window.innerWidth - containerDistance }}
+        />
         {items.map((ele) => (
           <List item={ele} key={ele?.id} />
         ))}
@@ -91,8 +140,30 @@ const Portfolio = () => {
       <section />
       <section />
       <section />
+      <div className="pProgress">
+        <svg width="100%" height="100%" viewBox="0 0 160 160">
+          <circle
+            cx="80"
+            cy="80"
+            r="70"
+            fill="none"
+            stroke="#ddd"
+            strokeWidth={20}
+          />
+          <motion.circle
+            cx="80"
+            cy="80"
+            r="70"
+            fill="none"
+            stroke="#555"
+            strokeWidth={20}
+            style={{ pathLength: scrollYProgress }}
+            transform="rotate(-90 80 80)"
+          />
+        </svg>
+      </div>
     </div>
-  )
+  );
 }
 
 export default Portfolio
