@@ -42,6 +42,11 @@ section{
     scroll-snap-align: center;
 }
 
+.Toastify {
+    position: fixed !important;
+    z-index: 9999;
+  }
+
 /* media queries responsive layouts */
 @media (min-width: 640px){
     .container{

@@ -1,0 +1,145 @@
+.contact{
+    height: 100%;
+    display: flex;
+    gap: 100px;
+}
+
+.cSection{
+    width: 50%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+form{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+input, textarea {
+    padding: 12px;
+    border-radius: 5px;
+    border-color: #555;
+}
+
+.formItem{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label{
+    font-size: 13px;
+}
+
+.button {
+    height: 50px;
+    width: 100%;
+    position: relative;
+    background-color: transparent;
+    cursor: pointer;
+    border: 2px solid #252525;
+    overflow: hidden;
+    border-radius: 30px;
+    color: #333;
+    transition: all 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  }
+  
+  .btn-txt {
+    z-index: 1;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+  
+  .type1::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: all 1s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    background-color: #555;
+    border-radius: 30px;
+    visibility: hidden;
+    height: 10px;
+    width: 10px;
+    z-index: -1;
+  }
+  
+  .button:hover {
+    color: #fff;
+    border: none;
+    transition: all 1s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  }
+  
+  .type1:hover::after {
+    visibility: visible;
+    transform: scale(100) translateX(2px);
+  }
+  
+
+.cTitle{
+    font-size: 50px;
+    font-weight: 100;
+}
+
+.loader {
+    width: 20px;
+    height: 20px;
+    border: 3px solid #fff;
+    border-top: 3px solid #999;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+    display: inline-block;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @media (max-width: 1280px) {
+    .form {
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    .contact {
+      gap: 30px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .contact {
+      flex-direction: column;
+    }
+  
+    .cSection {
+      width: 100%;
+    }
+  
+    .cSection:first-child {
+      height: 70%;
+    }
+    .cSection:last-child{
+        height: 30%;
+    }
+  }
+
+  @media (max-width : 567px) {
+    .cTitle{
+        font-size: 40px;
+    }
+  }
+
+  @media (max-width : 460px) {
+    .cTitle{
+        font-size: 20px;
+    }
+  }
